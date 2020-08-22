@@ -52,9 +52,7 @@ def check_sunset():
         # define rgb value of led
         with open("values.txt", "r") as values_file:
             content = values_file.read().splitlines()
-            red = content[0]
-            green = content[1]
-            blue = content[2]
+            red, green, blue = content[0], content[1], content[2]
         
         # turn on leds
         turn_on_leds() ## replace with your function for turning on your specific leds, i control my leds through pinging them via their local ip adress and giving them the parameters using the url
