@@ -32,7 +32,7 @@ turning leds off once you shutdown your pc:
 7: select the "action" menu and create a new action "start programm" and paste the path of your "turn_off_on_sd.pyw" file then click ok
 
 
-You are done! Your LEDs will now Turn on and off automatically once it gets dark!
+You are done! Your LEDs will now Turn on and off automatically once it gets dark out!
 
 
 
