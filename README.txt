@@ -3,7 +3,7 @@ program that automatically turns on and off your led strips
 steps to implement:
 
 
-1: go through the pyw files and fill in all comments that are marked with a "##" with your parameters
+1: go through the pyw files and follow all comments that are marked with a "##" with your parameters
 
 2: open windows task scheduler by pressing the windows key and searching for "task scheduler"
 
