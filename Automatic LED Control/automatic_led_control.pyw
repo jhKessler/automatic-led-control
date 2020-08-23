@@ -1,13 +1,6 @@
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
 import datetime
-
-
-# set up driver arguments for headless
-options = Options()
-options.add_argument('--headless')
-options.add_argument("--disable-gpu")
-
+import requests
+from bs4 import BeautifulSoup
 
 # url of sunset and sunrise website
 URL = "https://sunrisesunset.de/sonne/deutschland/hamburg/" ## edit url for your area
@@ -15,16 +8,12 @@ URL = "https://sunrisesunset.de/sonne/deutschland/hamburg/" ## edit url for your
 # check sunset function
 def check_sunset():
     
-    # load website
-    driver = webdriver.Firefox(options=options)
-    driver.get(URL)
-
     # get values of sunset and sunrise
-    sunrise_str = driver.find_element_by_id("sunrise").text
-    sunset_str = driver.find_element_by_id("sunset").text
+    html = requests.get(URL)
+    soup = BeautifulSoup(html.text, "html.parser")
     
-    # quit driver
-    driver.quit()
+    sunset_str = soup.find(id="sunset").text
+    sunrise_str = soup.find(id="sunrise").text
 
     # get time right now
     now = datetime.datetime.now().time()
@@ -55,12 +44,10 @@ def check_sunset():
             red, green, blue = content[0], content[1], content[2]
         
         # turn on leds
-        turn_on_leds() ## replace with your function for turning on your specific leds, i control my leds through pinging them via their local ip adress and giving them the parameters using the url
+        turn_on_leds() ## replace with your function for turning on your specific leds, i control my leds through pinging them via their local ip address and giving them the parameters using the url
         """
         rgb_url = f"http://#ip adress off leds, example: 192.168.1.2#/?red={red}&green={green}&blue={blue}"
-        driver = webdriver.Firefox(options=options)
-        #driver.get(rgb_url)
-        driver.quit()
+        request.get(rgb_url)
         """
         # change led status to on
         with open("led_status.txt", "w") as status_file:
@@ -74,9 +61,7 @@ def check_sunset():
         turn_off_leds() ## enter your function for turning off your specific leds here, i control my leds through pinging them via their ip adress and giving them the parameters using the url
         """        
         off_url = "http://#ip adress off leds, example: 192.168.1.2#/?red=0&green=0&blue=0""
-        driver = webdriver.Firefox(options=options)
-        driver.get(off_url)
-        driver.quit()
+        requests.get(off_url)
         """
         # change status of leds to off
         with open("led_status.txt", "w") as status_file:
