@@ -51,7 +51,7 @@ def check_sunset():
         action = "turned on leds"
         
     # if time is not between sunset and sunrise and led is turned on, turn off the leds
-    elif not on_condition1 and not on_condition2 and led_status:
+    elif not dark_out and led_status:
         turn_off_leds() ## enter your function for turning off your specific leds here, i control my leds through pinging them via their ip adress and giving them the parameters using the url
         """        
         off_url = "http://#ip adress off leds, example: 192.168.1.2#/?red=0&green=0&blue=0""
