@@ -23,6 +23,7 @@ def check_sunset():
     # define conditions to find out if time right now is between sunset and sunrise using midnight
     on_condition1 = True if sunset < now < midnight1 else False
     on_condition2 = True if midnight2 < now < sunrise else False
+    dark_out = True if on_condition1 or on_condition2 else False
 
     # define led status right now
     with open("led_status.txt", "r") as status_file:
@@ -30,10 +31,10 @@ def check_sunset():
         led_status = True if led_status_str == "on" else False
 
     # if time is between sunset and sunrise and led is not turned on, turn on the leds
-    if on_condition1 or on_condition2 and not led_status:
+    if dark_out and not led_status:
         # define rgb value of led
         with open("values.txt", "r") as values_file:
-            content = values_file.read().splitlines()
+            content = values_file.read().split(":")
             red, green, blue = content[0], content[1], content[2]
         
         # turn on leds
@@ -68,7 +69,8 @@ def check_sunset():
         action = "no action"
     # change time documentation for last run
     with open("detection_documentation.txt", "a") as documentation:
-        documentation.write("Ran led_detection at: " + str(datetime.datetime.now()) + f" | Status: {action}" + "\n")
+        time = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+        documentation.write("Ran led_detection at: " + time + f" | Status: {action}" + "\n")
 
 # get time right now
 now = datetime.datetime.now().time()
