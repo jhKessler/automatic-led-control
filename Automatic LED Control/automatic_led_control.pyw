@@ -15,13 +15,6 @@ def check_sunset():
     sunset_str = soup.find(id="sunset").text
     sunrise_str = soup.find(id="sunrise").text
 
-    # get time right now
-    now = datetime.datetime.now().time()
-
-    # define midnight
-    midnight1 = datetime.time(hour=23, minute=59)
-    midnight2 = datetime.time(hour=0, minute=0)
-
     # define sunset and sunrise time
     minutes_offset = 30 # i want the leds to turn on when its just starting to get dark out and off when the sun is completely up, feel free to change to your wishes
     sunset =  (datetime.datetime.strptime(sunset_str, '%H:%M') - datetime.timedelta(minutes=minutes_offset)).time()
@@ -77,7 +70,19 @@ def check_sunset():
     with open("detection_documentation.txt", "a") as documentation:
         documentation.write("Ran led_detection at: " + str(datetime.datetime.now()) + f" | Status: {action}" + "\n")
 
+# get time right now
+now = datetime.datetime.now().time()
+
+# define midnight and 3am
+midnight1 = datetime.time(hour=23, minute=59)
+midnight2 = datetime.time()
+threeAM = datetime.time(hour=3)
 # call the program
-check_sunset()
+nighttime = True if midnight2 < now < threeAM else False
+
+if not nightime:
+    check_sunset()
+
+
 
 
