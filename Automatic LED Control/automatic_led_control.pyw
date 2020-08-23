@@ -2,12 +2,12 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 
-# url of sunset and sunrise website
-URL = "https://sunrisesunset.de/sonne/deutschland/hamburg/" ## edit url for your area
-
 # check sunset function
 def check_sunset():
     
+    # url of sunset and sunrise website
+    URL = "https://sunrisesunset.de/sonne/deutschland/hamburg/" ## edit url for your area
+
     # get values of sunset and sunrise
     html = requests.get(URL)
     soup = BeautifulSoup(html.text, "html.parser")
