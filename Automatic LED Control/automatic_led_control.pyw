@@ -70,7 +70,7 @@ def check_sunset():
     # change time documentation for last run
     with open("detection_documentation.txt", "a") as documentation:
         time = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
-        documentation.write("Ran led_detection at: " + time + f" | Status: {action}" + "\n")
+        documentation.write(f"Ran led_detection at: {time} | Status: {action} \\n")
 
 # get time right now
 now = datetime.datetime.now().time()
