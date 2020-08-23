@@ -80,7 +80,7 @@ threeAM = datetime.time(hour=3)
 # call the program
 nighttime = True if midnight2 < now < threeAM else False
 
-if not nightime:
+if not nighttime:
     check_sunset()
 
 
