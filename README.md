@@ -16,7 +16,7 @@ Turning leds off and on when sun is down:
 
 5: Click on "trigger" and then "new"
 
-6: Select "on startup" and check box for "repeat every:" and enter how often you want to check if leds should be turned on/off then click "ok"
+6: Select "on workstation unlock" and check box for "repeat every:" and enter how often you want to check if leds should be turned on/off then click "ok"
 
 7: Select the "action" menu and create a new action "start programm" and paste the path of your "automatic_led_control.pyw" file then click ok
 
