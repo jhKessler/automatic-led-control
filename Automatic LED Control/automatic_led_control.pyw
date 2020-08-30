@@ -91,8 +91,7 @@ def write_documentation(action):
     
     # add time documentation to file
     with open(r"C:\Users\Johnny\Desktop\Automatisierung\data\detection_documentation.txt", "a") as documentation:
-        time = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
-        documentation.write(f"Ran led_detection at: {time} | Status: {action}" + "\n")
+        documentation.write(f"Ran led_detection at: {now} | Status: {action}" + "\n")
 
 
 # define times
