@@ -115,8 +115,7 @@ runtime = True if not daytime and not nighttime else False
 if runtime:
 
     # get times for sunset/sunrise and check if its dark out
-    sun_times = get_suntimes()
-    dark_out = check_dark_out(sun_times)
+    dark_out = check_dark_out(get_suntimes())
 
     # define led_status right now
     led_status = get_led_status()
