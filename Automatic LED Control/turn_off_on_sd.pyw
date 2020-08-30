@@ -1,31 +1,24 @@
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
 import datetime
+import requests
 
-# define status of leds
-with open("led_status.txt", "r") as status_file:
+# define led status
+with open(r"C:\Users\Johnny\Desktop\Automatisierung\data\led_status.txt", "r") as status_file:
     led_status = status_file.read()
     leds_on = True if led_status == "on" else False
 
 if leds_on:
     # turn off leds
-    turn_off_leds() ## replace with your function for turning on your specific leds, i control my leds through pinging them via their local ip adress and giving them the parameters using the url
-    # set up driver arguments for headless
-    
-    # define driver
-    
-    #options = Options()#
-    #options.add_argument('--headless')#
-    #options.add_argument("--disable-gpu")#
-    #driver = webdriver.Firefox(options=options)#
-    #URL = "http://#ip adress off leds, example: 192.168.1.2#/?red=0&green=0&blue=0"#
-    #driver.get(URL)#
-   
+    URL = "http://192.168.178.30/?red=0&green=0&blue=0"
+    #requests.get(URL)
     action = "turned off"
+
+    with open(r"C:\Users\Johnny\Desktop\Automatisierung\data\led_status.txt", "w") as status_file:
+        status_file.write("off")
 
 else:
     action = "no action"
 
 
-with open("detection_documentation.txt", "a") as documentation:
-    documentation.write(f"Ran turn_off_leds at: {str(datetime.datetime.now())}" + f" | Status: {action}" + "\n")
+with open(r"C:\Users\Johnny\Desktop\Automatisierung\data\detection_documentation.txt", "a") as documentation:
+    time = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+    documentation.write(f"Ran turn_off_leds at: {time}" + f" | Status: {action}" + "\n")
