@@ -5,7 +5,7 @@ import requests
 def get_suntimes():
 
     # url of sunset and sunrise website
-    URL = "https://sunrisesunset.de/sonne/deutschland/hamburg/"
+    URL = "https://sunrisesunset.de/sonne/deutschland/hamburg/" ## please choose your location and then insert your URL
 
     # get values of sunset and sunrise
     html = requests.get(URL)
@@ -24,7 +24,7 @@ def get_suntimes():
 def get_led_status():
     
     # define led status right now and return it
-    with open(r"C:\Users\Johnny\Desktop\Automatisierung\data\led_status.txt", "r") as status_file:
+    with open(r"data\led_status.txt", "r") as status_file:
         led_status_str = status_file.read()
         led_status = True if led_status_str == "on" else False
     
@@ -64,33 +64,33 @@ def check_action(led_status, dark_out):
 def turn_on_leds():
     
     # define rgb value of led
-    with open(r"C:\Users\Johnny\Desktop\Automatisierung\data\VALUES.txt", "r") as values_file:
+    with open(r"data\VALUES.txt", "r") as values_file:
         content = values_file.read().split(":")
         red, green, blue = content[0], content[1], content[2]
         
     # turn on leds
-    rgb_url = f"http://192.168.178.30/?red={red}&green={green}&blue={blue}"
-    # requests.get(rgb_url)
+    rgb_url = f"http://192.168.178.30/?red={red}&green={green}&blue={blue}" ## please insert your own command for turning on your leds
+    requests.get(rgb_url)
 
     # change led status to on
-    with open(r"C:\Users\Johnny\Desktop\Automatisierung\data\led_status.txt", "w") as status_file:
+    with open(r"data\led_status.txt", "w") as status_file:
         status_file.write("on")
 
 
 def turn_off_leds():
     
-    off_url = "http://192.168.178.30/?red=0&green=0&blue=0"
-    # requests.get(off_url)
+    off_url = "http://192.168.178.30/?red=0&green=0&blue=0" ## please change to your command for turning off the leds
+    requests.get(off_url)
     
     # change status of leds to off
-    with open(r"C:\Users\Johnny\Desktop\Automatisierung\data\led_status.txt", "w") as status_file:
+    with open(r"data\led_status.txt", "w") as status_file:
         status_file.write("off")
 
 
 def write_documentation(action):
     
     # add time documentation to file
-    with open(r"C:\Users\Johnny\Desktop\Automatisierung\data\detection_documentation.txt", "a") as documentation:
+    with open(r"data\detection_documentation.txt", "a") as documentation:
         documentation.write(f"Ran led_detection at: {now} | Status: {action}" + "\n")
 
 
