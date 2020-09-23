@@ -1,6 +1,10 @@
-Automatic LED Controller
+# Automatic LED Controller
+## This repository contains 2 different functionalities
+### 1: A python script that will run scheduled in the background and automatically turn on your LEDs/Lights when it's getting dark out and turn them off when the sun is rising again
+### 2: A GUI RGB LED Controller for controlling your LEDs manually
 
-Implementation:
+
+## Implementation:
 
 
 1: Go through the pyw files and follow all comments that are marked with a "##", filling them with your parameters
@@ -10,7 +14,7 @@ Implementation:
 3: Click on "create task" and name it
 
 
-Turning leds off and on when sun is down:
+### Turning leds off and on when sun is down:
 
 4: Check box "run whether user is logged in or not" and configure for you operating system
 
@@ -23,7 +27,7 @@ Turning leds off and on when sun is down:
 8: Click ok to create the task
 
 
-Turning leds off once you shutdown your pc:
+### Turning leds off once you shutdown your pc:
 
 4: Check box "run whether user is logged in or not" and configure for you operating system
 
@@ -35,6 +39,5 @@ Turning leds off once you shutdown your pc:
 
 
 You are done! Your LEDs will now Turn on and off automatically once it gets dark out!
-
 
 
