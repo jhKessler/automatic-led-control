@@ -66,7 +66,7 @@ def turn_on_leds():
     # define rgb value of led
     with open(r"data\VALUES.txt", "r") as values_file:
         content = values_file.read().split(":")
-        red, green, blue = content[0], content[1], content[2]
+        red, green, blue = content
         
     # turn on leds
     rgb_url = f"http://192.168.178.30/?red={red}&green={green}&blue={blue}" ## please insert your own command for turning on your leds
