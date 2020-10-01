@@ -54,11 +54,7 @@ class MainWindow(QMainWindow):
             self.setGeometry(self.x, self.y, self.width, self.height)
             self.adjustSize()
             self.setWindowTitle(self.title)
-            
-            # set icon
-            self.icon = QIcon()
-            self.icon.addFile(r"C:\Users\Johnny\Desktop\Automatisierung\icon.ico", QtCore.QSize(32,32))
-            self.setWindowIcon(self.icon)
+           
             
             # show window
             self.show()
